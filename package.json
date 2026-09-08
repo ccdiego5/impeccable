@@ -37,7 +37,7 @@
   "scripts": {
     "build:skills": "bun run scripts/build.js --skip-root-sync",
     "build:skills:release": "bun run scripts/build.js",
-    "build": "bun run build:skills && mkdir -p build/_data && rm -rf build/_data/dist && cp -R dist build/_data/dist",
+    "build": "node api.js && bun run build:skills && mkdir -p build/_data && rm -rf build/_data/dist && cp -R dist build/_data/dist",
     "build:release": "bun run build:skills:release && mkdir -p build/_data && rm -rf build/_data/dist && cp -R dist build/_data/dist",
     "build:extension": "node scripts/build-extension.js",
     "package:vscode": "bun run build:skills && cd dist/vscode && bunx --package @vscode/vsce@3.9.2 vsce package --no-dependencies",
